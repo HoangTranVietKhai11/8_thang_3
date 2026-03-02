@@ -1,10 +1,52 @@
 /**
  * 🌸 March 8th Romantic Surprise Website - script.js
- * Features: Floating decorations, Music Player, Envelope + Typing animation,
- *           Gallery Lightbox, Gift Modal with Confetti
  */
 
-'use strict';
+/* =====================================================================
+   🌸 GLOBAL HANDLERS — called from inline onclick in HTML
+   ===================================================================== */
+
+let _envelopeOpened = false;
+
+window.handleEnvelopeClick = function () {
+  if (_envelopeOpened) return;
+  _envelopeOpened = true;
+
+  const envelope     = document.getElementById('envelope');
+  const envelopeWrap = document.getElementById('envelopeWrap');
+  const letterContent = document.getElementById('letterContent');
+  const letterBody   = document.getElementById('letterBody');
+
+  envelope.classList.add('open');
+
+  setTimeout(() => {
+    envelopeWrap.style.transition = 'all 0.5s ease';
+    envelopeWrap.style.opacity    = '0';
+    envelopeWrap.style.transform  = 'translateY(-20px) scale(0.95)';
+
+    setTimeout(() => {
+      envelopeWrap.style.display = 'none';
+      letterContent.classList.add('visible');
+      startTyping(letterBody, LETTER_TEXT);
+    }, 500);
+  }, 900);
+};
+
+window.handleGiftOpen = function () {
+  const giftBox   = document.getElementById('giftBox');
+  const giftModal = document.getElementById('giftModal');
+
+  if (giftBox) giftBox.classList.add('opening');
+
+  setTimeout(() => {
+    if (giftModal) {
+      giftModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    startConfetti();
+    launchFloatingHearts();
+  }, 500);
+};
 
 /* =====================================================================
    🌸 SECTION 1: INITIALIZATION & UTILITIES
@@ -404,21 +446,29 @@ function initMusicPlayer() {
    ===================================================================== */
 
 const LETTER_TEXT = [
-  'Chị thân yêu của em,',
+  'Chúc mừng 8/3 chị 💕',
   '',
-  'Hôm nay là ngày 8 tháng 3 — Ngày Quốc tế Phụ nữ — em muốn gửi đến chị những lời chúc mừng chân thành và yêu thương nhất từ trái tim em. 💗',
+  'Em không biết phải gọi mối quan hệ của mình là gì,',
+  'chỉ biết rằng chị là một người rất đặc biệt trong cuộc sống của em.',
   '',
-  '🌸 Chúc chị luôn mạnh khỏe, tràn đầy năng lượng và luôn tươi cười rạng rỡ mỗi ngày.',
+  'Chị không phải chị ruột của em,',
+  'nhưng lại là người khiến em cảm thấy thân thuộc một cách lạ kỳ.',
+  'Những cuộc trò chuyện của mình — dù dài hay ngắn —',
+  'đều là những khoảnh khắc em luôn trân trọng.',
   '',
-  '🌺 Chúc chị luôn thành công trong công việc, được mọi người yêu mến và trân trọng như chị xứng đáng được nhận.',
+  'Ở bên chị, em được là chính mình.',
+  'Không cần cố gắng quá nhiều, không cần gượng ép,',
+  'mọi thứ tự nhiên đến mức… em cũng không hiểu vì sao lại hợp nhau đến vậy.',
   '',
-  '💝 Chúc chị có thật nhiều niềm vui, hạnh phúc bên gia đình và những người thân yêu.',
+  'Cảm ơn chị vì đã đồng hành cùng em,',
+  'vì đã lắng nghe và chia sẻ,',
+  'và vì đã vô tình trở thành một phần quan trọng trong những ngày bình thường của em.',
   '',
-  'Trong mắt em, chị luôn là người phụ nữ phi thường — mạnh mẽ, dịu dàng, và tuyệt vời theo cách riêng của chị. ✨',
+  'Chúc chị luôn xinh đẹp, hạnh phúc và được yêu thương thật nhiều.',
+  'Và nếu có thể… em mong mình sẽ còn nói chuyện, còn cười cùng nhau thật lâu nữa.',
   '',
-  'Cảm ơn chị vì tất cả những gì chị đã làm. Em yêu chị rất nhiều! 🌸',
-  '',
-  'Happy Women\'s Day 2026 🎉',
+  'Vì thật lòng mà nói…',
+  'em rất thích cảm giác có chị trong cuộc sống của mình 💗',
 ];
 
 function initEnvelopeLetter() {
