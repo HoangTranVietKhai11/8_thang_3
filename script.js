@@ -61,6 +61,29 @@ document.addEventListener('DOMContentLoaded', () => {
   initGift();
   initScrollAnimations();
   initFooterHearts();
+
+  // ── Auto-play music on first user interaction ──
+  const audio = document.getElementById('audioPlayer');
+  function triggerAutoPlay() {
+    if (!audio) return;
+    // Load track if not already loaded
+    if (!audio.src && PLAYLIST[0]?.src) {
+      audio.src = PLAYLIST[0].src;
+      audio.load();
+    }
+    audio.play().then(() => {
+      isPlaying = true;
+      const btnPlay = document.getElementById('btnPlay');
+      if (btnPlay) btnPlay.textContent = '⏸️';
+      const albumArtInner = document.querySelector('.album-art-inner');
+      const albumEmoji = document.getElementById('albumEmoji');
+      albumArtInner?.classList.add('spinning');
+      albumEmoji?.classList.add('spinning');
+    }).catch(() => { /* autoplay blocked - ok */ });
+  }
+
+  document.addEventListener('click', triggerAutoPlay, { once: true });
+  document.addEventListener('touchstart', triggerAutoPlay, { once: true });
 });
 
 /** Debounce utility */
@@ -588,20 +611,11 @@ function initGallery() {
 
   if (!grid) return;
 
-  // Build gallery grid
-  GALLERY_DATA.forEach((item, i) => {
-    const el = document.createElement('div');
-    el.classList.add('gallery-item', 'fade-up');
-    el.dataset.index = i;
-    el.innerHTML = `
-      <img class="gallery-img" src="${item.src}" alt="${item.caption}" loading="lazy" />
-      <div class="gallery-overlay">
-        <div class="gallery-overlay-icon">🔍</div>
-        <div class="gallery-overlay-text">${item.caption}</div>
-      </div>
-    `;
-    el.addEventListener('click', () => openLightbox(i));
-    grid.appendChild(el);
+  // Wire up click events on existing HTML gallery items (images are hardcoded in HTML)
+  const items = grid.querySelectorAll('.gallery-item');
+  items.forEach((el) => {
+    const idx = parseInt(el.dataset.index ?? '0', 10);
+    el.addEventListener('click', () => openLightbox(idx));
   });
 
   // Lightbox controls

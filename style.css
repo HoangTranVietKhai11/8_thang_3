@@ -1065,6 +1065,19 @@ button {
   background: var(--grad-pink);
   box-shadow: var(--shadow-card);
   transition: var(--trans-med);
+  animation: galleryItemIn 0.5s ease both;
+}
+
+@keyframes galleryItemIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .gallery-item:hover {
