@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A special March 8th surprise gift website dedicated to my beloved sister. 💗" />
+  <title>Happy Women's Day 🌸 | Chúc Mừng Ngày 8/3</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ===================== FLOATING DECORATIONS ===================== -->
+  <div class="floating-decor" id="floatingDecor"></div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav" id="navbar">
+    <div class="nav-brand">🌸 8/3 🌸</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Trang chủ</a></li>
+      <li><a href="#music">Âm nhạc</a></li>
+      <li><a href="#letter">Thư chúc</a></li>
+      <li><a href="#gallery">Kỷ niệm</a></li>
+      <li><a href="#gift">Quà tặng</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ===================== HERO SECTION ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">✨ Ngày Quốc tế Phụ nữ ✨</div>
+      <h1 class="hero-title">
+        Chúc Mừng<br />
+        <span class="hero-title-accent">Ngày 8 tháng 3</span>
+      </h1>
+      <p class="hero-sub">Gửi đến người chị yêu quý của em 💗</p>
+      <p class="hero-desc">
+        Hôm nay là ngày đặc biệt dành cho những người phụ nữ tuyệt vời nhất thế giới —<br />
+        và chị chính là một trong số đó 🌸
+      </p>
+      <div class="hero-btns">
+        <a href="#letter" class="btn btn-primary">💌 Đọc thư của em</a>
+        <a href="#gift" class="btn btn-secondary">🎁 Nhận quà bí mật</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-flower">🌸</div>
+      <div class="hero-ring ring-1"></div>
+      <div class="hero-ring ring-2"></div>
+      <div class="hero-ring ring-3"></div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+      <span>Cuộn xuống</span>
+    </div>
+  </section>
+
+  <!-- ===================== MUSIC PLAYER ===================== -->
+  <section class="section music-section" id="music">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">🎵 Âm nhạc</span>
+        <h2 class="section-title">Những giai điệu ngọt ngào</h2>
+        <p class="section-desc">Những bài hát em muốn tặng chị hôm nay 🎶</p>
+      </div>
+
+      <div class="music-player-wrap">
+        <!-- Album Art -->
+        <div class="music-album-art" id="albumArt">
+          <div class="album-art-inner">
+            <div class="album-emoji" id="albumEmoji">🌸</div>
+          </div>
+          <div class="album-glow"></div>
+        </div>
+
+        <!-- Player Info & Controls -->
+        <div class="music-controls-wrap">
+          <div class="music-track-info">
+            <h3 class="track-name" id="trackName">Tên bài hát</h3>
+            <p class="track-artist" id="trackArtist">Nghệ sĩ</p>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-wrap">
+            <span class="time-current" id="timeCurrent">0:00</span>
+            <div class="progress-bar-bg" id="progressBar">
+              <div class="progress-bar-fill" id="progressFill"></div>
+              <div class="progress-thumb" id="progressThumb"></div>
+            </div>
+            <span class="time-total" id="timeTotal">0:00</span>
+          </div>
+
+          <!-- Controls -->
+          <div class="player-btns">
+            <button class="player-btn player-btn-sm" id="btnShuffle" title="Ngẫu nhiên">🔀</button>
+            <button class="player-btn" id="btnPrev" title="Bài trước">⏮️</button>
+            <button class="player-btn player-btn-play" id="btnPlay" title="Phát / Dừng">▶️</button>
+            <button class="player-btn" id="btnNext" title="Bài tiếp">⏭️</button>
+            <button class="player-btn player-btn-sm" id="btnRepeat" title="Lặp lại">🔁</button>
+          </div>
+
+          <!-- Volume -->
+          <div class="volume-wrap">
+            <span class="vol-icon">🔊</span>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.7" />
+          </div>
+        </div>
+
+        <!-- Playlist -->
+        <div class="playlist-wrap">
+          <h4 class="playlist-title">📃 Danh sách phát</h4>
+          <ul class="playlist" id="playlist"></ul>
+        </div>
+      </div>
+
+      <!-- Hidden Audio Element -->
+      <audio id="audioPlayer" preload="metadata"></audio>
+    </div>
+  </section>
+
+  <!-- ===================== LOVE LETTER SECTION ===================== -->
+  <section class="section letter-section" id="letter">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">💌 Thư chúc</span>
+        <h2 class="section-title">Một lá thư chúc mừng 💌</h2>
+        <p class="section-desc">Em muốn gửi đến chị điều này 💗</p>
+      </div>
+
+      <!-- Envelope -->
+      <div class="envelope-wrap" id="envelopeWrap">
+        <div class="envelope" id="envelope">
+          <div class="envelope-flap" id="envelopeFlap"></div>
+          <div class="envelope-body">
+            <div class="envelope-heart">💗</div>
+            <p class="envelope-hint">Nhấp để mở thư 💌</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter Content -->
+      <div class="letter-content" id="letterContent">
+        <div class="letter-paper">
+          <div class="letter-header">
+            <span class="letter-date">Hà Nội, ngày 8 tháng 3 năm 2026</span>
+            <div class="letter-deco">🌸 🌺 🌸</div>
+          </div>
+          <p class="letter-greeting">Chị thân yêu của em,</p>
+          <div class="letter-body" id="letterBody">
+            <!-- Typed text will appear here -->
+          </div>
+          <div class="letter-signature">
+            <p>Với tất cả tình cảm của,</p>
+            <p class="signature-name">Em — người luôn yêu quý chị 💗</p>
+          </div>
+          <div class="letter-decor-bottom">🌸 🦋 🌸</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PHOTO GALLERY ===================== -->
+  <section class="section gallery-section" id="gallery">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">📸 Kỷ niệm</span>
+        <h2 class="section-title">Những khoảnh khắc đáng nhớ</h2>
+        <p class="section-desc">Những khoảnh khắc đẹp mà chúng ta đã có 🥰</p>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Gallery items injected by JS -->
+      </div>
+
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <button class="lightbox-prev" id="lightboxPrev">❮</button>
+        <button class="lightbox-next" id="lightboxNext">❯</button>
+        <div class="lightbox-content">
+          <div class="lightbox-img-wrap">
+            <div class="lightbox-placeholder" id="lightboxPlaceholder"></div>
+          </div>
+          <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SPECIAL SURPRISE GIFT ===================== -->
+  <section class="section gift-section" id="gift">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">🎁 Bất ngờ</span>
+        <h2 class="section-title">Một món quà bí mật 🎁</h2>
+        <p class="section-desc">Em có một điều bất ngờ dành cho chị...</p>
+      </div>
+
+      <div class="gift-box-wrap" id="giftBoxWrap">
+        <div class="gift-box" id="giftBox">
+          <div class="gift-lid" id="giftLid">
+            <div class="gift-ribbon-h"></div>
+            <div class="gift-bow">🎀</div>
+          </div>
+          <div class="gift-base">
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-shine"></div>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-gift" id="btnOpenGift">🎁 Mở quà của chị</button>
+      </div>
+
+      <!-- Gift Reveal Modal -->
+      <div class="gift-modal" id="giftModal">
+        <div class="gift-modal-card">
+          <button class="gift-modal-close" id="giftModalClose">✕</button>
+          <div class="gift-modal-content">
+            <div class="gift-modal-emoji">🌸💗🌺</div>
+            <h3 class="gift-modal-title">Món quà từ trái tim em!</h3>
+            <div class="gift-modal-message">
+              <p>🌸 <strong>Chị ơi,</strong></p>
+              <p>
+                Hôm nay là ngày đặc biệt dành cho những người phụ nữ phi thường — và với em, chị chính là
+                người phi thường nhất! 💗
+              </p>
+              <p>
+                Em muốn tặng chị thứ không thể mua được bằng tiền:<br />
+                <strong>Tình yêu thương chân thành, sự trân trọng sâu sắc và lời chúc từ tận đáy lòng.</strong>
+              </p>
+              <p>
+                💐 Chúc chị luôn mạnh mẽ, hạnh phúc, rạng rỡ như bông hoa xuân —<br />
+                và luôn biết rằng có em ở đây, bên cạnh chị mỗi ngày. 🌟
+              </p>
+              <p class="gift-quote">
+                <em>"Phụ nữ không cần hoàn hảo. Họ chỉ cần là chính mình — và điều đó đã đủ tuyệt vời lắm rồi."</em>
+              </p>
+            </div>
+            <div class="gift-modal-hearts" id="giftHearts"></div>
+            <button class="btn btn-primary" id="btnThanks" onclick="closeGiftModal()">💗 Cảm ơn em!</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confetti Canvas -->
+      <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-hearts" id="footerHearts"></div>
+    <div class="footer-content">
+      <div class="footer-logo">🌸 8/3 🌸</div>
+      <p class="footer-msg">
+        Làm với cả trái tim 💗 — Dành tặng người chị yêu quý nhất thế giới của em
+      </p>
+      <p class="footer-sub">
+        Chúc chị luôn mạnh mẽ, hạnh phúc và rạng rỡ mỗi ngày ✨<br />
+        Happy Women's Day 2026 🌺
+      </p>
+      <div class="footer-divider"></div>
+      <p class="footer-copy">Made with ❤️ &amp; 🌸 | © 2026</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
