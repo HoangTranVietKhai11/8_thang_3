@@ -12,17 +12,17 @@ window.handleEnvelopeClick = function () {
   if (_envelopeOpened) return;
   _envelopeOpened = true;
 
-  const envelope     = document.getElementById('envelope');
+  const envelope = document.getElementById('envelope');
   const envelopeWrap = document.getElementById('envelopeWrap');
   const letterContent = document.getElementById('letterContent');
-  const letterBody   = document.getElementById('letterBody');
+  const letterBody = document.getElementById('letterBody');
 
   envelope.classList.add('open');
 
   setTimeout(() => {
     envelopeWrap.style.transition = 'all 0.5s ease';
-    envelopeWrap.style.opacity    = '0';
-    envelopeWrap.style.transform  = 'translateY(-20px) scale(0.95)';
+    envelopeWrap.style.opacity = '0';
+    envelopeWrap.style.transform = 'translateY(-20px) scale(0.95)';
 
     setTimeout(() => {
       envelopeWrap.style.display = 'none';
@@ -33,7 +33,7 @@ window.handleEnvelopeClick = function () {
 };
 
 window.handleGiftOpen = function () {
-  const giftBox   = document.getElementById('giftBox');
+  const giftBox = document.getElementById('giftBox');
   const giftModal = document.getElementById('giftModal');
 
   if (giftBox) giftBox.classList.add('opening');
@@ -148,38 +148,38 @@ function initNavbar() {
  */
 const PLAYLIST = [
   {
-    name: 'A Thousand Years',
-    artist: 'Christina Perri',
+    name: 'Romantic',
+    artist: 'The Mountain',
     emoji: '🌹',
-    src: '',          // 👉 Replace with: 'music/song1.mp3'
+    src: 'music/song2.mp3',
     color: '#ffb3d1',
   },
   {
-    name: 'Perfect',
-    artist: 'Ed Sheeran',
+    name: 'Romantic',
+    artist: 'NastelBom',
     emoji: '💗',
-    src: '',
+    src: 'music/song1.mp3',
     color: '#ffd6e8',
   },
   {
-    name: 'All of Me',
-    artist: 'John Legend',
+    name: 'Romantic Beautiful',
+    artist: 'NastelBom',
     emoji: '🌸',
-    src: '',
+    src: 'music/song3.mp3',
     color: '#fce4ec',
   },
   {
-    name: 'Can\'t Help Falling in Love',
-    artist: 'Elvis Presley',
+    name: 'Romantic Saxophone',
+    artist: 'Prettyjohn',
     emoji: '🎶',
-    src: '',
+    src: 'music/song4.mp3',
     color: '#f8bbd0',
   },
   {
-    name: 'Thinking Out Loud',
-    artist: 'Ed Sheeran',
+    name: 'Soft Saxophone',
+    artist: 'Prettyjohn',
     emoji: '✨',
-    src: '',
+    src: 'music/song5.mp3',
     color: '#ffb3d1',
   },
 ];
@@ -558,12 +558,20 @@ function startTyping(container, lines) {
    ===================================================================== */
 
 const GALLERY_DATA = [
-  { emoji: '🌸', title: 'Mùa xuân rực rỡ', caption: 'Những ngày xuân đẹp đẽ bên nhau 🌸' },
-  { emoji: '🎂', title: 'Sinh nhật vui vẻ', caption: 'Kỷ niệm ngày sinh nhật ngọt ngào 🎂' },
-  { emoji: '🌺', title: 'Những đóa hoa', caption: 'Đẹp như những bông hoa tươi thắm 🌺' },
-  { emoji: '🌈', title: 'Cầu vồng hy vọng', caption: 'Màu sắc cuộc sống luôn rực rỡ 🌈' },
-  { emoji: '🥂', title: 'Khoảnh khắc đặc biệt', caption: 'Những buổi tối đáng nhớ cùng nhau 🥂' },
-  { emoji: '🦋', title: 'Tự do và bay cao', caption: 'Bay cao như cánh bướm tự do 🦋' },
+  { src: 'img/img1.jpg', caption: 'Khoảnh khắc đáng nhớ 1 🌸' },
+  { src: 'img/img2.jpg', caption: 'Khoảnh khắc đáng nhớ 2 💕' },
+  { src: 'img/img3.jpg', caption: 'Khoảnh khắc đáng nhớ 3 🌺' },
+  { src: 'img/img4.jpg', caption: 'Khoảnh khắc đáng nhớ 4 ✨' },
+  { src: 'img/img5.jpg', caption: 'Khoảnh khắc đáng nhớ 5 💗' },
+  { src: 'img/img6.jpg', caption: 'Khoảnh khắc đáng nhớ 6 🌸' },
+  { src: 'img/img7.jpg', caption: 'Khoảnh khắc đáng nhớ 7 💕' },
+  { src: 'img/img8.jpg', caption: 'Khoảnh khắc đáng nhớ 8 🌺' },
+  { src: 'img/img9.jpg', caption: 'Khoảnh khắc đáng nhớ 9 ✨' },
+  { src: 'img/img10.jpg', caption: 'Khoảnh khắc đáng nhớ 10 💗' },
+  { src: 'img/img11.jpg', caption: 'Khoảnh khắc đáng nhớ 11 🌸' },
+  { src: 'img/img12.jpg', caption: 'Khoảnh khắc đáng nhớ 12 💕' },
+  { src: 'img/img13.jpg', caption: 'Khoảnh khắc đáng nhớ 13 🌺' },
+  { src: 'img/img14.jpg', caption: 'Khoảnh khắc đáng nhớ 14 💗' },
 ];
 
 let lightboxCurrent = 0;
@@ -586,10 +594,7 @@ function initGallery() {
     el.classList.add('gallery-item', 'fade-up');
     el.dataset.index = i;
     el.innerHTML = `
-      <div class="gallery-emoji">
-        <span>${item.emoji}</span>
-        <p>${item.title}</p>
-      </div>
+      <img class="gallery-img" src="${item.src}" alt="${item.caption}" loading="lazy" />
       <div class="gallery-overlay">
         <div class="gallery-overlay-icon">🔍</div>
         <div class="gallery-overlay-text">${item.caption}</div>
@@ -648,9 +653,7 @@ function initGallery() {
     const item = GALLERY_DATA[idx];
     if (!item || !lightboxPlaceholder) return;
     lightboxPlaceholder.innerHTML = `
-      <div class="lb-emoji">${item.emoji}</div>
-      <div class="lb-msg">${item.title}</div>
-      <div class="lb-sub">${item.caption}</div>
+      <img src="${item.src}" alt="${item.caption}" style="max-width:100%;max-height:75vh;border-radius:12px;object-fit:contain;" />
     `;
     if (lightboxCaption) lightboxCaption.textContent = item.caption;
   }
